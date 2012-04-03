@@ -1525,6 +1525,14 @@ test('Array', function () {
   equal((function(){ return Array.create(arguments); })('one','two'), ['one','two'], 'Array.create | works on an arguments object');
   equal((function(){ return Array.create(arguments); })('one','two').slice, Array.prototype.slice, 'Array.create | converted arguments object is a true array');
 
+  // Array.wrap
+
+  equal(Array.wrap('one'), ['one'], 'Array.wrap | string');
+  equal(Array.wrap(2), [2], 'Array.wrap | number');
+  equal(Array.wrap(true), [true], 'Array.wrap | boolean');
+  equal(Array.wrap([1,2,3]), [1,2,3], 'Array.wrap | array');
+  equal(Array.wrap(null), [], 'Array.wrap | null');
+  equal(Array.wrap(undefined), [], 'Array.wrap | undefined');
 
   // Array#zip
 
